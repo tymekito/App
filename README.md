@@ -1,2 +1,6 @@
 # App
-Vue 3 app
+Funny-app
+- Vue3
+- TypeScript
+- Pinia
+
