@@ -4,3 +4,4 @@ Funny-app
 - TypeScript
 - Pinia
 
+docker-compose up --build
