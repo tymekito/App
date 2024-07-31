@@ -1,0 +1,31 @@
+name: Build and deploy Vue 3 app to Azure Web App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+
+    - name: Install dependencies
+      run: npm install --prefix src/client
+
+    - name: Build
+      run: npm run build --prefix src/client
+
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: my-vue-app
+        slot-name: production
+        publish-profile: <publishData><publishProfile profileName="funnyappservice - Web Deploy" publishMethod="MSDeploy" publishUrl="funnyappservice.scm.azurewebsites.net:443" msdeploySite="funnyappservice" userName="$funnyappservice" userPWD="p1fJXpTNYWaRaxJseupmml2CsKsNps56giXd0vmsJkgv63n1irdtba4Amex8" destinationAppUrl="https://funnyappservice.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="https://portal.azure.com" webSystem="WebSites"><databases /></publishProfile><publishProfile profileName="funnyappservice - FTP" publishMethod="FTP" publishUrl="ftps://waws-prod-db3-275.ftp.azurewebsites.windows.net/site/wwwroot" ftpPassiveMode="True" userName="REDACTED" userPWD="REDACTED" destinationAppUrl="https://funnyappservice.azurewebsites.net" SQLServerDBConnectionString="REDACTED" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="https://portal.azure.com" webSystem="WebSites"><databases /></publishProfile><publishProfile profileName="funnyappservice - Zip Deploy" publishMethod="ZipDeploy" publishUrl="funnyappservice.scm.azurewebsites.net:443" userName="$funnyappservice" userPWD="p1fJXpTNYWaRaxJseupmml2CsKsNps56giXd0vmsJkgv63n1irdtba4Amex8" destinationAppUrl="https://funnyappservice.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="https://portal.azure.com" webSystem="WebSites"><databases /></publishProfile></publishData>
+        package: src/client/dist
