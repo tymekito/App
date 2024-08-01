@@ -22,7 +22,7 @@ jobs:
           dotnet-version: '8.x'
 
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: dotnet build ${{env.DOTNET_ROOT}}/WebApplication1 --configuration Release
 
       - name: dotnet publish
         run: dotnet publish ${{env.DOTNET_ROOT}}/WebApplication1 -c Release -o ${{env.DOTNET_ROOT}}/WebApplication1/publish
