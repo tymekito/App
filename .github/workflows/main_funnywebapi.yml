@@ -19,10 +19,10 @@ jobs:
           dotnet-version: '8.x'
 
       - name: Build with dotnet
-        run: dotnet build WebApplication1/WebApplication1.sln --configuration Release
+        run: dotnet build AzureApp/AzureApp.sln --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish WebApplication1/WebApplication1.sln -c Release -o ${{github.workspace}}/myapp
+        run: dotnet publish AzureApp/AzureApp.sln -c Release -o ${{github.workspace}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4

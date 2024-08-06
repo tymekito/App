@@ -21,7 +21,7 @@ namespace AzureAppp.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<string> Get()
         {
-            return new List<string>();
+            return Summaries.ToList();
         }
     }
 }
