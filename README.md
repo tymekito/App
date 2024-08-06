@@ -1,7 +1,6 @@
 # App
-Funny-app
-- Vue3
-- TypeScript
-- Pinia
 
-docker-compose up --build
+.net 8 API application with Azure features
+
+### Hosted on
+https://funnywebapi.azurewebsites.net/swagger/index.html
