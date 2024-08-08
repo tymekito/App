@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Users.Infrastructure.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Azure;
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
 
 namespace AzureApp.DependencyInjection
 {
@@ -30,22 +32,21 @@ namespace AzureApp.DependencyInjection
 
         private static IServiceCollection RegisterAzureSqlDb(
             this IServiceCollection serviceCollection,
-            IConfiguration configuration)
+             IConfiguration configuration)
         {
             // Configure Azure Key Vault
             var keyVaultUrl = configuration["AzureKeyVault:VaultUrl"];
 
-            if (string.IsNullOrEmpty(keyVaultUrl) is false)
-            {
-                serviceCollection.AddAzureClients(builder =>
-                {
-                    builder.AddSecretClient(new Uri(keyVaultUrl));
-                });
-            }
             serviceCollection.AddDbContext<UserContext>(options =>
             {
-                var connectionString = configuration["appSqlServerConnectionString"];
-                options.UseSqlServer(connectionString);
+                if (string.IsNullOrEmpty(keyVaultUrl) is false)
+                {
+                    var connectionString = new SecretClient(
+                        new Uri(keyVaultUrl),
+                        new DefaultAzureCredential())
+                    .GetSecret("appSqlServerConnectionString");
+                    options.UseSqlServer(connectionString.Value.Value);
+                }
             });
 
             return serviceCollection

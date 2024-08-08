@@ -1,6 +1,4 @@
-﻿using Azure.Identity;
-using Azure.Security.KeyVault.Secrets;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Users.Domain.Entities;
 
 namespace Users.Infrastructure.DbContexts
