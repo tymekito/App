@@ -314,16 +314,9 @@ healthchecksdb
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
 
-# Remove file ocelot.json
-ocelot.json
 
 # Exclude folder with builded applications
 */build/
-
-# Exclude docker containers logs and data
-docker/data/
-docker/logs/
-infrastructure/graylog/docker
 
 .DS_Store
 node_modules
@@ -347,10 +340,3 @@ pnpm-debug.log*
 *.ntvs*
 *.njsproj
 *.sw?
-
-
-# SQLite databases files
-*.db
-*.db-shm
-*.db-wal
-!tools/**/*.db

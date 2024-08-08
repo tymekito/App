@@ -1,9 +1,0 @@
-version: '3.8'
-
-services:
-  vue-app:
-    build:
-      context: ./funny-app
-      dockerfile: Dockerfile
-    ports:
-      - "8080:80"
