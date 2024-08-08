@@ -9,7 +9,8 @@ namespace AzureApp.DependencyInjection
         public static IServiceCollection RegisterDependencyInjection(
             this IServiceCollection serviceCollection)
         {
-            return serviceCollection;
+            return serviceCollection
+                .RegisterUsersDependencies();
         }
 
         private static IServiceCollection RegisterUsersDependencies(

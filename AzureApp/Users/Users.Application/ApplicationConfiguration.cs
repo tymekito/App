@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Users.Application.Services;
 
 namespace Users.Application
 {
@@ -7,7 +8,8 @@ namespace Users.Application
         public static IServiceCollection RegisterUsersApplicationDependencies(
             this IServiceCollection serviceCollection)
         {
-             return serviceCollection;
+             return serviceCollection
+                .AddTransient<IUserService, UserService>();
         }
     }
 }

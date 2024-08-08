@@ -1,4 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Users.Application.Repositories;
+using Users.Infrastructure.DbContexts;
+using Users.Infrastructure.Repositories;
 
 namespace Users.Infrastructure
 {
@@ -7,7 +10,8 @@ namespace Users.Infrastructure
         public static IServiceCollection RegisterUserssInfrastructureDependencies(
             this IServiceCollection serviceCollection)
         {
-            return serviceCollection;
+            return serviceCollection
+                .AddTransient<IUserRepository, UserRepository>();
         }
     }
 }
