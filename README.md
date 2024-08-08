@@ -1,4 +1,4 @@
-# App
+# Azure API app
 
 .net 8 API application with Azure features
 
