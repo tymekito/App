@@ -13,15 +13,15 @@ namespace Users.Infrastructure.Repositories
         {
             _context = context;
         }
-        public async Task Add(User user)
+        public async Task Add(User user, CancellationToken cancellationToken = default)
         {
-            await _context.AddAsync(user);
-            await _context.SaveChangesAsync();
+            await _context.AddAsync(user, cancellationToken);
+            await _context.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task<IReadOnlyCollection<User>> GetAll()
+        public async Task<IReadOnlyCollection<User>> GetAll(CancellationToken cancellationToken = default)
         {
-            return await _context.Users.ToListAsync();
+            return await _context.Users.ToListAsync(cancellationToken);
         }
     }
 }
