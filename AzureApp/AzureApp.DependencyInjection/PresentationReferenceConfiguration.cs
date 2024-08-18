@@ -1,14 +1,15 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Users.Presentation;
 
 namespace AzureApp.DependencyInjection
 {
     public static class PresentationReferenceConfiguration
     {
         public static IMvcBuilder RegisterPresentationInjection(
-            this IMvcBuilder serviceCollection)
+            this IMvcBuilder builder)
         {
 
-            return serviceCollection.AddApplicationPart(typeof(Users.Presentation.AssemblyReference).Assembly);
+            return builder.RegisterUsersPresentation();
 
         }
     }
