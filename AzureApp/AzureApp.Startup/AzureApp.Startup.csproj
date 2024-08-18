@@ -8,12 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
     <PackageReference Include="Azure.Identity" Version="1.12.0" />
+    <PackageReference Include="FluentValidation" Version="11.9.2" />
+    <PackageReference Include="MediatR" Version="11.1.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AzureApp.DependencyInjection\AzureApp.DependencyInjection.csproj" />
+    <ProjectReference Include="..\AzureApp.SharedDomain\AzureApp.SharedDomain.csproj" />
   </ItemGroup>
 
 </Project>

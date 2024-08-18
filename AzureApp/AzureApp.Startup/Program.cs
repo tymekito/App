@@ -4,7 +4,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .RegisterPresentationInjection();
 
 builder.Services.RegisterDependencyInjection(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();

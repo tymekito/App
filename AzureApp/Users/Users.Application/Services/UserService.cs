@@ -1,4 +1,5 @@
-﻿using Users.Application.Repositories;
+﻿using Users.Application.Abstractions;
+using Users.Domain.Abstractions;
 using Users.Domain.Entities;
 
 namespace Users.Application.Services

@@ -1,13 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Users.Application.Repositories;
-using Users.Infrastructure.DbContexts;
+using Users.Domain.Abstractions;
 using Users.Infrastructure.Repositories;
 
 namespace Users.Infrastructure
 {
     public static class InfrastructureConfiguration
     {
-        public static IServiceCollection RegisterUserssInfrastructureDependencies(
+        public static IServiceCollection RegisterUsersInfrastructureDependencies(
             this IServiceCollection serviceCollection)
         {
             return serviceCollection

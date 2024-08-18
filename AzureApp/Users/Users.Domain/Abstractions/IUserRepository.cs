@@ -1,7 +1,6 @@
-﻿
-using Users.Domain.Entities;
+﻿using Users.Domain.Entities;
 
-namespace Users.Application.Repositories
+namespace Users.Domain.Abstractions
 {
     public interface IUserRepository
     {

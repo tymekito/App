@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Users.Application.Repositories;
+using Users.Domain.Abstractions;
 using Users.Domain.Entities;
 using Users.Infrastructure.DbContexts;
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Users.Application.Abstractions;
 using Users.Application.Services;
 
 namespace Users.Application

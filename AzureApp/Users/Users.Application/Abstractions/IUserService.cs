@@ -1,6 +1,6 @@
 ﻿using Users.Domain.Entities;
 
-namespace Users.Application.Services
+namespace Users.Application.Abstractions
 {
     public interface IUserService
     {
