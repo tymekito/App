@@ -26,7 +26,6 @@ namespace AzureApp.DependencyInjection
         {
             return serviceCollection
                 .RegisterUsersInfrastructureDependencies()
-                .RegisterUsersApplicationDependencies()
                 .RegisterUsersApplicationDependencies();
         }
 
@@ -50,9 +49,7 @@ namespace AzureApp.DependencyInjection
                 }
             });
 
-            return serviceCollection
-                .RegisterUsersInfrastructureDependencies()
-                .RegisterUsersApplicationDependencies();
+            return serviceCollection;
         }
     }
 }

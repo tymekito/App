@@ -4,7 +4,6 @@
     using Microsoft.AspNetCore.Mvc;
     using Users.Application.Commands.CreateUser;
     using Users.Application.Commands.RemoveUser;
-    using Users.Application.Models;
     using Users.Application.Queries.GetUserDetails;
     using Users.Application.Queries.GetUsers;
 
@@ -39,10 +38,10 @@
         /// <returns>The <see cref="Task{IActionResult}"/></returns>
         [HttpPut("new")]
         public async Task<IActionResult> AddUser(
-            [FromBody] UserDto user,
+            [FromBody] CreateUserCommand command,
             CancellationToken cancellationToken)
         {
-            var result = await _mediator.Send(new CreateUserCommand(user, cancellationToken));
+            var result = await _mediator.Send(command, cancellationToken);
             return result.IsSuccess ? Ok() : BadRequest(result.Error);
         }
 

@@ -17,7 +17,7 @@ namespace Users.Application.Commands.CreateUser
         public async Task<Result> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             var userId = Guid.NewGuid();
-            var user = new User(userId, request.User.FirstName, request.User.LastName);
+            var user = new User(userId, request.FirstName, request.LastName);
             await _userRepository.Add(user, cancellationToken);
 
             return Result.Success(userId);
