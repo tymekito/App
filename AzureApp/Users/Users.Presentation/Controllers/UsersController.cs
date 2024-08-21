@@ -5,6 +5,7 @@
     using Users.Application.Commands.CreateUser;
     using Users.Application.Commands.RemoveUser;
     using Users.Application.Models;
+    using Users.Application.Queries.GetUserDetails;
     using Users.Application.Queries.GetUsers;
 
     /// <summary>
@@ -54,6 +55,18 @@
         public async Task<IActionResult> GetUsers(CancellationToken cancellationToken)
         {
             var response = await _mediator.Send(new GetUsersQuery(cancellationToken));
+            return response.IsSuccess ? Ok(response.Value) : NotFound(response.Error);
+        }
+
+        /// <summary>
+        /// The GetUsers
+        /// </summary>
+        /// <param name="cancellationToken">The cancellationToken<see cref="CancellationToken"/></param>
+        /// <returns>The <see cref="Task{IActionResult}"/></returns>
+        [HttpGet("{userId}")]
+        public async Task<IActionResult> GetUserDetails([FromRoute] Guid userId, CancellationToken cancellationToken)
+        {
+            var response = await _mediator.Send(new GetUserDetailsQuery(userId, cancellationToken));
             return response.IsSuccess ? Ok(response.Value) : NotFound(response.Error);
         }
 

@@ -1,7 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
-using Users.Application.Abstractions;
-using Users.Application.Services;
 
 namespace Users.Application
 {
@@ -11,8 +9,7 @@ namespace Users.Application
             this IServiceCollection serviceCollection)
         {
             return serviceCollection
-               .RegisterHandlers()
-               .AddTransient<IUserService, UserService>();
+               .RegisterHandlers();
         }
 
         private static IServiceCollection RegisterHandlers(this IServiceCollection serviceCollection)

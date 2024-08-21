@@ -1,21 +1,28 @@
 ﻿using AzureApp.SharedApplication.Abstractions.Messaging;
 using AzureApp.SharedDomain.Results;
-using Users.Application.Abstractions;
+using Users.Domain.Abstractions;
+using Users.Domain.Exceptions;
 
 namespace Users.Application.Commands.RemoveUser
 {
     public class RemoveUserCommandHandler : ICommandHandler<RemoveUserCommand>
     {
-        private readonly IUserService _userService;
+        private readonly IUserRepository _userRepository;
 
-        public RemoveUserCommandHandler(IUserService userService)
+        public RemoveUserCommandHandler(IUserRepository userRepository)
         {
-            _userService = userService;
+            _userRepository = userRepository;
         }
         public async Task<Result> Handle(RemoveUserCommand command, CancellationToken cancellationToken)
         {
-            var user = await _userService.GetUserAsync(command.UserId);
-            await _userService.Remove(command.UserId, cancellationToken);
+            var user = await _userRepository.Get(command.UserId);
+
+            if (user == null)
+            {
+                throw new UserNotFoundException(command.UserId);
+            }
+
+            await _userRepository.Remove(user, cancellationToken);
 
             return Result.Success(command.UserId);
         }
