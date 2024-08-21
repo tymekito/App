@@ -1,9 +1,9 @@
 ﻿using AzureApp.SharedApplication.Abstractions.Messaging;
+using Users.Application.Models;
 
-namespace Users.Application.Commands
+namespace Users.Application.Commands.CreateUser
 {
     public sealed record CreateUserCommand(
-        string FirstName,
-        string LastName,
+        UserDto User,
         CancellationToken CancellationToken) : ICommand;
 }

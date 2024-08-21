@@ -1,5 +1,4 @@
 ﻿using AzureApp.SharedDomain.Results;
-using AzureApp.SharedDomain.Results.Base;
 using MediatR;
 
 namespace AzureApp.SharedApplication.Abstractions.Messaging
@@ -8,11 +7,4 @@ namespace AzureApp.SharedApplication.Abstractions.Messaging
         where TCommand : ICommand
     {
     }
-
-    public interface ICommandHandler<TCommand, TResponse>
-        : IRequestHandler<TCommand, Result<TResponse>>
-        where TCommand : ICommand<TResponse>
-    {
-    }
-
 }

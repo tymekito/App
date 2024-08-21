@@ -3,9 +3,9 @@ using AzureApp.SharedDomain.Results;
 using Users.Domain.Abstractions;
 using Users.Domain.Entities;
 
-namespace Users.Application.Commands
+namespace Users.Application.Commands.CreateUser
 {
-    internal sealed class CreateUserCommandHandler : ICommandHandler<CreateUserCommand>
+    public sealed class CreateUserCommandHandler : ICommandHandler<CreateUserCommand>
     {
         private readonly IUserRepository _userRepository;
         public CreateUserCommandHandler(
@@ -17,7 +17,7 @@ namespace Users.Application.Commands
         public async Task<Result> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             var userId = Guid.NewGuid();
-            var user = new User(userId, request.FirstName, request.LastName);
+            var user = new User(userId, request.User.FirstName, request.User.LastName);
             await _userRepository.Add(user, cancellationToken);
 
             return Result.Success(userId);

@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Exceptions\Base\" />
+    <ProjectReference Include="..\..\AzureApp.SharedDomain\AzureApp.SharedDomain.csproj" />
   </ItemGroup>
 
 </Project>

@@ -5,7 +5,7 @@ using Users.Domain.Abstractions;
 
 namespace Users.Application.Queries.GetUsers
 {
-    internal sealed class GetUsersQueryHandler : IQueryHandler<GetUsersQuery, GetUsersResponse>
+    public sealed class GetUsersQueryHandler : IQueryHandler<GetUsersQuery, GetUsersResponse>
     {
         private readonly IUserRepository _userRepository;
         public GetUsersQueryHandler(

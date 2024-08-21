@@ -2,11 +2,14 @@
 {
     public sealed class User
     {
-        public User() { }
-        public User(Guid id, string firstName, string lastName) 
+        public User()
+        {
+            // For EF
+        }
+        public User(Guid id, string firstName, string lastName)
         {
             Id = id;
-            FirstName = firstName;  
+            FirstName = firstName;
             LastName = lastName;
         }
         public Guid Id { get; set; }

@@ -2,8 +2,8 @@
 {
     public abstract class NotFoundException : Exception
     {
-        protected NotFoundException(string message)
-            : base(message)
+        public NotFoundException(string elementTypeName, string elementName)
+            : base($"{elementTypeName} with {elementName} not found")
         {
         }
     }
